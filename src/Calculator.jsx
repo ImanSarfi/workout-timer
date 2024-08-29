@@ -6,10 +6,10 @@ function Calculator() {
           <label>Type of workout</label>
           <select>
             <option value="">Full-body workout (6 exercises)</option>
-            <option value="">Arm + Leg (6 exercises)</option>
+            <option value="">Arm + Leg (4 exercises)</option>
             <option value="">Arms only (6 exercises)</option>
             <option value="">Leags only (6 exercises)</option>
-            <option value="">Cour only (6 exercises)</option>
+            <option value="">Core only (6 exercises)</option>
 
           </select>
         </div>
