@@ -143,3 +143,12 @@ button {
   font-size: 1.2rem;
   cursor: pointer;
 }
+
+.btn-voice {
+  psition: absolute;
+  top : 3.2rem;
+  right: 3.2rem;
+  background-color: transparent;
+  font-size: 2.2rem;
+  color: #333;
+}

@@ -1,10 +1,12 @@
 import { VscMusic } from "react-icons/vsc";
+import { TbMusicOff } from "react-icons/tb";
 
 
-function ToggleSound() {
+
+function ToggleSound({allowSound , setAllowSound}) {
     return (
-        <button>
-            <VscMusic />
+        <button className="btn-voice" onClick={() => setAllowSound((allow) => !allow)}>
+            {allowSound ? <VscMusic /> : <TbMusicOff/>}
         </button>
     )
 }
