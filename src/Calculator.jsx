@@ -1,38 +1,79 @@
-function Calculator() {
+import { useState } from 'react';
+import clickSound from "../public/ClickSound.m4a";
+
+
+function Calculator({ allowSound, workout }) {
+
+  const [number, setNumber] = useState(workout.at(0).numExercises);
+  const [sets, setSets] = useState(3);
+  const [speed, setSpeed] = useState(90);
+  const [durationBreak, setDurationBreak] = useState(5);
+
+  const Duration = (number * sets * speed );
+  const mins = Math.floor(Duration);
+  const seconds = (Duration - mins) * 60;
+
+  const playSound = function () {
+    if (!allowSound) return ;
+    const sound = new Audio(clickSound);
+    sound.play();
+  };
+
   return (
     <>
       <form>
         <div>
           <label>Type of workout</label>
-          <select>
-            <option value="">Full-body workout (6 exercises)</option>
-            <option value="">Arm + Leg (4 exercises)</option>
-            <option value="">Arms only (6 exercises)</option>
-            <option value="">Leags only (6 exercises)</option>
-            <option value="">Core only (6 exercises)</option>
-
+          <select value={number} onChange={(e) => setNumber(+e.target.value)}>
+            {workout.map((workout) => (
+              <option value={workout.numExercises} key={workout.name}>
+                {workout.name} ({workout.numExercises} exercises)
+              </option>
+            ))}
           </select>
         </div>
         <div>
           <label> How many sets</label>
-          <input type="range" min={1} max={6} />
-          <span>5</span>
+          <input
+            type="range"
+            min={1}
+            max={5}
+            value={sets}
+            onChange={(e) => setSets(e.target.value)}
+          />
+          <span>{sets}</span>
         </div>
         <div>
           <label>How fast Are you</label>
-          <input type="range" min={1} max={6} />
-          <span>3</span>
+          <input
+            type="range"
+            min="30"
+            max="180"
+            value={speed}
+            onChange={(e) => setSpeed(e.target.value)}
+          />
+          <span>{speed} sec/exercise</span>
         </div>
         <div>
           <label>Break length</label>
-          <input type="range" min={1} max={6} />
-          <span>3</span>
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value={durationBreak}
+            onChange={(e) => setDurationBreak(e.target.value)}
+          />
+          <span>{durationBreak} minutes/break</span>
         </div>
       </form>
       <section>
-        <button>+</button>
-        <p>46 : 00</p>
-        <button>+</button>
+        <button onClick={() => {}}>-</button>
+        <p>
+          {mins < 10 && '0'}
+          {mins} : {seconds < 10 && "0"}
+          {seconds}
+        </p>
+        <button onClick={() => {}}>+</button>
       </section>
     </>
   );
