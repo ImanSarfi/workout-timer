@@ -10,9 +10,9 @@ function App() {
 
   const partOfDay = time.slice(-2);
 
-  const workout = [
+  const workouts = [
     {
-      nmber : "Full-body workout ",
+      name : "Full-body workout ",
       numExercises : partOfDay === "AM" ? 9 : 8 
     },
     {
@@ -29,9 +29,10 @@ function App() {
     },
     {
       nmber : "Core Only",
-      nomExercises : partOfDay === "AM" ? 5 : 4
-    }
+      nomExercises : partOfDay === "AM" ? 5 : 4,
+    },
   ];
+
   
 
   function formatTime(date) {
@@ -56,7 +57,7 @@ function App() {
       <h1>workOut Timer</h1>
       <time>FOR YOUR WORKOUT ON {time}</time>
       <ToggleSound allowSound={allowSound} setAllowSound={setAllowSound}/>
-      <Calculator workout={workout} allowSound={allowSound}/>
+      <Calculator workouts={workouts} allowSound={allowSound}/>
     </main>
   );
 }
