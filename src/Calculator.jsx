@@ -19,7 +19,7 @@ const Claculator = function Calculator({ allowSound, workouts }) {
 
 
   function handleDic(){
-    setduration((duration) => Math.floor(duration) - 1);
+    setduration((duration) => (duration > 1 ? Math.ceil(duration) - 1 : 0));
   }
 
 
