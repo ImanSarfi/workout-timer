@@ -13,23 +13,23 @@ function App() {
   const workouts = [
     {
       name : "Full-body workout ",
-      numExercises : partOfDay === "AM" ? 9 : 8 
+      numExercises : partOfDay === "AM" ? 9 : 8 ,
     },
     {
-      nmber : "Arms + Legs",
-      nomExercises : 6
+      name : "Arms + Legs",
+      numExercises : 6,
     },
     {
-      nmber : "Arms Only",
-      nomExercises : 3
+      name : "Arms Only",
+      numExercises : 3,
     },
     {
-      nmber : "Legs only",
-      nomExercises : 4
+      name : "Legs only",
+      numExercises : 4,
     },
     {
-      nmber : "Core Only",
-      nomExercises : partOfDay === "AM" ? 5 : 4,
+      name : "Core Only",
+      numExercises : partOfDay === "AM" ? 5 : 4,
     },
   ];
 
