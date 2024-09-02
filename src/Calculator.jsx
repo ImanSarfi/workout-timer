@@ -2,6 +2,7 @@ import { memo, useEffect, useState } from 'react';
 import clickSound from '../public/ClickSound.m4a';
 import { SiEndeavouros } from 'react-icons/si';
 
+
 const Claculator = function Calculator({ allowSound, workouts }) {
   const [number, setNumber] = useState(workouts.at(0).numExercises);
   const [sets, setSets] = useState(3);
@@ -14,9 +15,18 @@ const Claculator = function Calculator({ allowSound, workouts }) {
   }, [number, speed, sets, durationBreak]);
   
   function handleInc() {
-    setduration((duration) => Math.floor(duration) + 1);
+    setduration((duration) => Math.floor(duration) + 1 );
   }
-
+  
+  useEffect(function() {
+    const playSound = function () {
+      if (!allowSound) return;
+      const sound = new Audio(clickSound);
+      sound.play();
+    }
+    playSound();
+  },[duration, allowSound]);
+  
 
   function handleDic(){
     setduration((duration) => (duration > 1 ? Math.ceil(duration) - 1 : 0));
@@ -35,12 +45,6 @@ const Claculator = function Calculator({ allowSound, workouts }) {
   const seconds = (duration - mins) * 60;
 
 
-
-  const playSound = function () {
-    if (!allowSound) return;
-    const sound = new Audio(clickSound);
-    sound.play();
-  };
 
   return (
     <>
